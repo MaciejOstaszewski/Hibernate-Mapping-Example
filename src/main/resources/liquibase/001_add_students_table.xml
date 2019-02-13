@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+        <changeSet id="001" author="demo">
+            <createTable tableName="students">
+                <column name="id" type="bigint" autoIncrement="true">
+                    <constraints primaryKey="true" nullable="false"/>
+                </column>
+                <column name="first_name" type="varchar(30)">
+                    <constraints nullable="false"/>
+                </column>
+                <column name="last_name" type="varchar(30)">
+                    <constraints nullable="false"/>
+                </column>
+                <column name="birth_date" type="date">
+                    <constraints nullable="false"/>
+                </column>
+
+            </createTable>
+
+            <createTable tableName="student_subjects">
+                <column name="student_id" type="bigint">
+                    <constraints nullable="false"/>
+                </column>
+                <column name="subject_id" type="bigint">
+                    <constraints nullable="false"/>
+                </column>
+            </createTable>
+
+            <addPrimaryKey tableName="student_subjects" columnNames="student_id, subject_id"/>
+
+        </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <include file="liquibase/001_add_students_table.xml" relativeToChangelogFile="false"/>
+    <include file="liquibase/002_add_grades_table.xml" relativeToChangelogFile="false"/>
+    <include file="liquibase/003_add_subjects_table.xml" relativeToChangelogFile="false"/>
+    <include file="liquibase/004_add_constrains.xml" relativeToChangelogFile="false"/>
+
+</databaseChangeLog>
