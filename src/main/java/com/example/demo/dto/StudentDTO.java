@@ -23,7 +23,7 @@ public class StudentDTO {
     private String firstName;
 
     @Size(min = 1, max = 30)
-    private String LastName;
+    private String lastName;
 
     @Past
     private LocalDate birthDate;

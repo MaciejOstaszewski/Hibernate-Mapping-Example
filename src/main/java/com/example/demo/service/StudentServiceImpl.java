@@ -10,7 +10,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -36,8 +38,18 @@ public class StudentServiceImpl implements StudentService {
         Student student = studentRepository
                 .findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("No such student!"));
-        System.out.println(student);
         return studentMapper.fromStudent(student, cycleAvoidingMappingContext);
+    }
+
+    @Transactional(readOnly = true)
+    @Override
+    public List<StudentDTO> getStudentList() {
+        List<Student> students = studentRepository
+                .findAll();
+
+        return students.stream()
+                .map(x -> studentMapper.fromStudent(x, cycleAvoidingMappingContext))
+                .collect(Collectors.toList());
     }
 
     @Transactional

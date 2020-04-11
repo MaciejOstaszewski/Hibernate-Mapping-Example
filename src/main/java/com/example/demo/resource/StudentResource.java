@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
@@ -24,6 +25,11 @@ public class StudentResource {
     @GetMapping("/{id}")
     public ResponseEntity<StudentDTO> getStudent(@PathVariable Long id) {
         return new ResponseEntity<>(studentService.getStudent(id), HttpStatus.OK);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<StudentDTO>> getStudents() {
+        return new ResponseEntity<>(studentService.getStudentList(), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
